@@ -1,0 +1,31 @@
+<h1>Listing rules</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Method Pattern</th>
+    <th>Path Pattern</th>
+    <th>Precedence</th>
+    <th>Response text</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @rules.each do |rule| %>
+  <tr>
+    <td><%= rule.name %></td>
+    <td><%= rule.method_pattern %></td>
+    <td><%= rule.path_pattern %></td>
+    <td><%= rule.precedence %></td>
+    <td><%= rule.response_text %></td>
+    <td><%= link_to 'Show', rule %></td>
+    <td><%= link_to 'Edit', edit_rule_path(rule) %></td>
+    <td><%= link_to 'Destroy', rule, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Rule', new_rule_path %>

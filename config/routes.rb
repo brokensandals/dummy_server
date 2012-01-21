@@ -1,4 +1,8 @@
 DummyServer::Application.routes.draw do
+  root to: 'rules#index'
+  resources :rules
+  match '*path' => 'rules#hit'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
