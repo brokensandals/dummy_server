@@ -28,6 +28,11 @@ class RulesController < ApplicationController
     end
   end
 
+  # GET /rules/1/edit
+  def edit
+    @rule = Rule.find(params[:id])
+  end
+
   # POST /rules
   def create
     @rule = Rule.new(params[:rule])
@@ -64,6 +69,17 @@ class RulesController < ApplicationController
     end
   end
 
+  # POST /rules/1/clear
+  # Can pass 'referrer' param to control redirect.
+  def clear
+    @rule = Rule.find(params[:id])
+    @rule.hits.destroy_all
+
+    respond_to do |format|
+      format.html { redirect_to params[:referrer] || @rule }
+    end
+  end
+
   # /*
   def hit
     rule = Rule.order(:precedence).detect do |rule|
@@ -80,6 +96,8 @@ class RulesController < ApplicationController
       raise ActionController::RoutingError.new('No matching route or rule')
     end
   end
+
+private
 
   # Return a hash of the headers, with some dull ones filtered out.
   def env_hash

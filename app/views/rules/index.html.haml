@@ -9,12 +9,16 @@
     %th Method
     %th Path
     %th
+    %th
+    %th
   
   %tbody
     - @rules.each do |rule|
-      %tr.rule
+      %tr
         %td= rule.precedence
-        %td= link_to rule.name, rule_path(rule)
+        %td= link_to rule.name, rule
         %td= rule.method_pattern
         %td= rule.path_pattern
+        %td= link_to 'edit', edit_rule_path(rule)
         %td= link_to 'destroy', rule, confirm: "Delete rule #{rule.name}?", method: :delete
+        %td= link_to 'clear', clear_rule_path(rule, referrer: rules_path), confirm: "Clear hits for #{rule.name}?", method: :post

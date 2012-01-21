@@ -1,8 +1,14 @@
-%h1= "Mock Server Rule #{@rule.name}"
+%h1= "#{@rule.name}"
 
 %p#notice= notice
 
-= render 'form'
+.rule
+  .precedence= "Precedence: #{@rule.precedence}"
+  .method-pattern= "Method: #{@rule.method_pattern}"
+  .path-pattern= "Path: #{@rule.path_pattern}"
+  .edit= link_to 'edit', edit_rule_path(@rule)
+  .destroy= link_to 'destroy', @rule, confirm: "Delete rule #{@rule.name}?", method: :delete
+  .clear= link_to 'clear', clear_rule_path(@rule), confirm: "Clear hits for #{@rule.name}?", method: :post
 
 %ul.hits
   - @rule.hits.order('created_at DESC').each do |hit|
