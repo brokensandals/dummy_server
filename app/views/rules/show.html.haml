@@ -13,14 +13,17 @@
   .destroy= link_to 'destroy', @rule, confirm: "Delete rule #{@rule.name}?", method: :delete
   .clear= link_to 'clear', clear_rule_path(@rule), confirm: "Clear hits for #{@rule.name}?", method: :post
 
-%ul.hits
-  - @rule.hits.order('created_at DESC').each do |hit|
-    %li.hit
-      %p.time= "Match at #{hit.created_at}"
+- if @rule.hits.empty?
+  %p Refresh this page to check for hits matching this rule.
+- else
+  %ul.hits
+    - @rule.hits.order('created_at DESC').each do |hit|
+      %li.hit
+        %p.time= "Match at #{hit.created_at}"
 
-      %dl.env
-        - hit.env.each do |key, value|
-          %dt= key
-          %dd= value
-      
-      %pre.body= hit.body
+        %dl.env
+          - hit.env.each do |key, value|
+            %dt= key
+            %dd= value
+        
+        %pre.body= hit.body
