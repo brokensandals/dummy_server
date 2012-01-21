@@ -11,3 +11,9 @@ The steps below will start the server at http://localhost:3000
     rails server
 
 Tested on Ruby 1.9.3-preview1.
+
+# TODO
+
+* Record and display non-textual request bodies gracefully
+* Allow arbitrary logic to be specified for generating responses
+* Automatically delete hit records after a time or quantity threshold
