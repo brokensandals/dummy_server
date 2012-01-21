@@ -6,6 +6,7 @@ class CreateRules < ActiveRecord::Migration
       t.string :path_pattern
       t.integer :precedence
       t.integer :response_status
+      t.text :response_headers
       t.text :response_text
 
       t.timestamps

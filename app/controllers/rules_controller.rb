@@ -91,6 +91,7 @@ class RulesController < ApplicationController
       rule.hits.create env: env_hash,
                        body: request.raw_post
       response.status = rule.response_status
+      headers.merge! rule.response_headers_hash
       response.body = rule.response_text
       render text: response.body
     else

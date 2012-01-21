@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20120121030541) do
     t.string   "path_pattern"
     t.integer  "precedence"
     t.integer  "response_status"
+    t.text     "response_headers"
     t.text     "response_text"
     t.datetime "created_at"
     t.datetime "updated_at"
