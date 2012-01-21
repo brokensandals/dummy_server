@@ -19,16 +19,13 @@ class RulesController < ApplicationController
 
   # GET /rules/new
   def new
-    @rule = Rule.new
+    @rule = Rule.new precedence: 5,
+                     method_pattern: '.*',
+                     path_pattern: '^/.*$'
 
     respond_to do |format|
       format.html # new.html.erb
     end
-  end
-
-  # GET /rules/1/edit
-  def edit
-    @rule = Rule.find(params[:id])
   end
 
   # POST /rules

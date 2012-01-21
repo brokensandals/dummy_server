@@ -1,0 +1,20 @@
+%h1 Mock Server Rules
+
+%p.new-rule= link_to 'New Rule', new_rule_path
+
+%table.rules
+  %thead
+    %th Precedence
+    %th Name
+    %th Method
+    %th Path
+    %th
+  
+  %tbody
+    - @rules.each do |rule|
+      %tr.rule
+        %td= rule.precedence
+        %td= link_to rule.name, rule_path(rule)
+        %td= rule.method_pattern
+        %td= rule.path_pattern
+        %td= link_to 'destroy', rule, confirm: "Delete rule #{rule.name}?", method: :delete

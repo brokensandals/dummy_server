@@ -1,0 +1,27 @@
+= form_for(@rule) do |f|
+  
+  - if @rule.errors.any?
+    %p.errors
+      = "#{pluralize(@rule.errors.count, 'error')} prohibited this rule from being saved:"
+      %ul
+        - @rule.errors.full_messages.each do |message|
+          %li= message
+  
+
+  %dl.edit
+    %dt= f.label :precedence
+    %dd= f.number_field :precedence
+
+    %dt= f.label :name
+    %dd= f.text_field :name
+
+    %dt= f.label :method_pattern
+    %dd= f.text_field :method_pattern
+
+    %dt= f.label :path_pattern
+    %dd= f.text_field :path_pattern
+
+    %dt= f.label :response_text
+    %dd= f.text_area :response_text
+
+  = f.submit

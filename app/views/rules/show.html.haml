@@ -1,0 +1,17 @@
+%h1= "Mock Server Rule #{@rule.name}"
+
+%p#notice= notice
+
+= render 'form'
+
+%ul.hits
+  - @rule.hits.order('created_at DESC').each do |hit|
+    %li.hit
+      %p.time= "Match at #{hit.created_at}"
+
+      %dl.env
+        - hit.env.each do |key, value|
+          %dt= key
+          %dd= value
+      
+      %pre.body= hit.body

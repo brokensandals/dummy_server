@@ -1,6 +1,6 @@
 DummyServer::Application.routes.draw do
   root to: 'rules#index'
-  resources :rules
+  resources :rules, except: :edit
   match '*path' => 'rules#hit'
 
   # The priority is based upon order of creation:
