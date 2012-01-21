@@ -8,6 +8,7 @@
   .method-pattern= "Method: #{@rule.method_pattern}"
   .path-pattern= "Path: #{@rule.path_pattern}"
   .response-status= "Status: #{@rule.response_status}"
+  .delay= "Delay: #{@rule.delay}"
   .edit= link_to 'edit', edit_rule_path(@rule)
   .destroy= link_to 'destroy', @rule, confirm: "Delete rule #{@rule.name}?", method: :delete
   .clear= link_to 'clear', clear_rule_path(@rule), confirm: "Clear hits for #{@rule.name}?", method: :post

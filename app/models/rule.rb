@@ -7,6 +7,7 @@ class Rule < ActiveRecord::Base
   validates :method_pattern, presence: true
   validates :path_pattern, presence: true
   validates :response_status, numericality: {only_integer: true}
+  validates :delay, numericality: {only_integer: true}
   validate :response_headers_parseable
 
   # Ensure pattern fields are valid regexes.

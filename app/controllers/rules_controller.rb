@@ -22,7 +22,8 @@ class RulesController < ApplicationController
     @rule = Rule.new precedence: 5,
                      method_pattern: '.*',
                      path_pattern: '^/.*$',
-                     response_status: 200
+                     response_status: 200,
+                     delay: 0
 
     respond_to do |format|
       format.html # new.html.erb
@@ -90,6 +91,7 @@ class RulesController < ApplicationController
     if rule
       rule.hits.create env: env_hash,
                        body: request.raw_post
+      sleep rule.delay if rule.delay > 0
       response.status = rule.response_status
       headers.merge! rule.response_headers_hash
       response.body = rule.response_text

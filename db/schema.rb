@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120121030541) do
+ActiveRecord::Schema.define(:version => 20120121201835) do
 
   create_table "hits", :force => true do |t|
     t.integer  "rule_id"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20120121030541) do
     t.text     "response_text"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "delay",            :default => 0
   end
 
 end

@@ -10,6 +10,7 @@
     %th Method
     %th Path
     %th Status
+    %th Delay
     %th
     %th
     %th
@@ -23,6 +24,7 @@
         %td= rule.method_pattern
         %td= rule.path_pattern
         %td= rule.response_status
+        %td= rule.delay
         %td= link_to 'edit', edit_rule_path(rule)
         %td= link_to 'destroy', rule, confirm: "Delete rule #{rule.name}?", method: :delete
         %td= link_to 'clear', clear_rule_path(rule, referrer: rules_path), confirm: "Clear hits for #{rule.name}?", method: :post
