@@ -17,3 +17,7 @@ Tested on Ruby 1.9.3-preview1.
 * Record and display non-textual request bodies gracefully
 * Allow arbitrary logic to be specified for generating responses
 * Automatically delete hit records after a time or quantity threshold
+
+# License
+
+Release under the MIT License. Copyright 2012 Jacob Williams.
