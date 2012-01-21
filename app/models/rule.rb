@@ -2,9 +2,11 @@
 class Rule < ActiveRecord::Base
   has_many :hits, dependent: :destroy
 
+  validates :name, presence: true, uniqueness: true
   validates :precedence, numericality: {only_integer: true}
   validates :method_pattern, presence: true
   validates :path_pattern, presence: true
+  validates :response_status, numericality: {only_integer: true}
 
   # Ensure pattern fields are valid regexes.
   validates_each :method_pattern, :path_pattern do |record, attribtue, value|

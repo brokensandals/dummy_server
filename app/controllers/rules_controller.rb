@@ -1,7 +1,7 @@
 class RulesController < ApplicationController
   # GET /rules
   def index
-    @rules = Rule.all
+    @rules = Rule.order('precedence')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -21,7 +21,8 @@ class RulesController < ApplicationController
   def new
     @rule = Rule.new precedence: 5,
                      method_pattern: '.*',
-                     path_pattern: '^/.*$'
+                     path_pattern: '^/.*$',
+                     response_status: 200
 
     respond_to do |format|
       format.html # new.html.erb
@@ -89,7 +90,7 @@ class RulesController < ApplicationController
     if rule
       rule.hits.create env: env_hash,
                        body: request.raw_post
-      response.status = 200
+      response.status = rule.response_status
       response.body = rule.response_text
       render text: response.body
     else
