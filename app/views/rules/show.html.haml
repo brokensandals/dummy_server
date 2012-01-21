@@ -4,6 +4,7 @@
 
 .rule
   .precedence= "Precedence: #{@rule.precedence}"
+  .hits= "Hits: #{@rule.hits.count}"
   .method-pattern= "Method: #{@rule.method_pattern}"
   .path-pattern= "Path: #{@rule.path_pattern}"
   .response-status= "Status: #{@rule.response_status}"
