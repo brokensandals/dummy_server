@@ -1,3 +1,42 @@
 // Place all the styles related to the Rules controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.hits {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.hit {
+  margin: 0;
+  padding: .5em 0;
+  border-bottom: 1px solid black;
+
+  .time {
+    color: green;
+  }
+
+  .env {
+    background-color: #eee;
+    padding: 5px;
+    border-radius: 3px;
+    overflow: hidden;
+    font-size: 85%;
+
+    dt {
+      clear: left;
+      width: 30ex;
+    }
+    dd {
+      color: green;
+    }
+    dt, dd {
+      float: left;
+    }
+  }
+
+  .body {
+    white-space: pre-wrap;
+  }
+}
